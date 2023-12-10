@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>datalist</title>
+    </head>
+    <body>
+        <select name="browser">
+            <option value="firefox">Firefox</option>
+            <option value="ie">IE</option>
+            <option value="chrome">Chrome</option>
+            <option value="opera">Opera</option>
+            <option value="safari">Safari</option>
+        </select>
+
+        <input type="text" list="browsers" />
+        <datalist id="browsers">
+            <option value="Firefox"></option>
+            <option value="IE"></option>
+            <option value="Chrome"></option>
+            <option value="Opera"></option>
+            <option value="Safari"></option>
+        </datalist>
+
+        <!-- 
+            select: 用户只能输入选项之一
+            input + datalist: 用户可以输入任何内容，同时可以使用自动补全和提示
+
+            参考：
+            https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/datalist
+            https://stackoverflow.com/questions/6865943/html-form-select-option-vs-datalist-option
+         -->
+    </body>
+</html>

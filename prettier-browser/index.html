@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Run Prettier in Browser</title>
+    </head>
+    <body>
+        <code lang="javascript">
+            <pre>
+if (Math.random() > 0.5){
+ console.log('yes')
+}</pre
+            >
+        </code>
+        <script type="module">
+            import * as prettier from 'https://unpkg.com/prettier@3.1.0/standalone.mjs';
+            import prettierPluginBabel from 'https://unpkg.com/prettier@3.1.0/plugins/babel.mjs';
+            import prettierPluginEstree from 'https://unpkg.com/prettier@3.1.0/plugins/estree.mjs';
+
+            const pre = document.querySelector('pre');
+            const code = pre.textContent;
+            const formatted = await prettier.format(code, {
+                parser: 'babel',
+                plugins: [prettierPluginBabel, prettierPluginEstree],
+            });
+            pre.textContent = formatted;
+        </script>
+    </body>
+</html>

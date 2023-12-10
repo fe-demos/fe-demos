@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>HTML5 废弃元素</title>
+        <style>
+            body {
+                width: 100vw;
+                height: 100vh;
+
+                .center-container {
+                    width: 200px;
+                    height: 200px;
+
+                    .red-box {
+                        width: 20px;
+                        height: 20px;
+                        background-color: red;
+                    }
+                }
+
+                .css-font {
+                    color: blue;
+                }
+
+                .css-text {
+                    text-decoration: line-through underline;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <center>center 是块级元素，可以水平居中子元素，HTML4 就废弃了</center>
+        <center class="center-container">
+            <div class="red-box"></div>
+            <div class="red-box"></div>
+        </center>
+
+        <font color="blue" size="3" face="霞鹜文楷"
+            >font 存粹用来描述文字的字体样式，在 HTML4 中被废弃，应该使用 CSS 替代</font
+        >
+
+        <span class="css-font">一段文字</span>
+        <strike>中划线</strike>
+        <s><u>中划线</u></s>
+
+        <u>下划线</u>
+
+        <span class="css-text">一段文本</span>
+        <big>一段文本</big>
+        <menu>
+            <div>menu item1</div>
+            <div>menu item2</div>
+            <div>menu item3</div>
+        </menu>
+
+        <p>
+            Enter the following at the telnet command prompt:
+            <code>set localecho</code><br />
+
+            The telnet client should display: <tt>Local Echo is on</tt>
+            <code>Local Echo is on</code>
+        </p>
+    </body>
+</html>

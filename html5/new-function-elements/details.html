@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Details</title>
+        <style>
+            details {
+                font: 16px 'Open Sans', Calibri, sans-serif;
+                width: 620px;
+            }
+
+            details > summary {
+                /* summary 默认 display: list-item; */
+                list-style: none;
+                padding: 2px 6px;
+                width: 15em;
+                background-color: #ddd;
+                border: none;
+                box-shadow: 3px 3px 4px black;
+                cursor: pointer;
+            }
+
+            details > p {
+                border-radius: 0 0 10px 10px;
+                background-color: #ddd;
+                padding: 2px 6px;
+                margin: 0;
+                box-shadow: 3px 3px 4px black;
+            }
+
+            details[open] > summary {
+                background-color: #ccf;
+            }
+        </style>
+    </head>
+    <body>
+        <details open>
+            <summary>系统需求</summary>
+            <p>
+                要求有一台运行操作系统的计算机。计算机必须有一些内存，最好有某种长期存储。建议有一个输入设备以及某种形式的输出设备。
+            </p>
+        </details>
+    </body>
+</html>

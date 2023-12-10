@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>HTML 5 新标签</title>
+        <style>
+            :root {
+                --link-color: blue;
+                --link-hovered-color: deepskyblue;
+
+                body {
+                    height: 100vh;
+                    display: flex;
+                    flex-direction: column;
+
+                    header {
+                        width: 100vw;
+                        height: 60px;
+                        background-color: lightcyan;
+                        display: flex;
+                        align-items: center;
+
+                        .avatar {
+                            width: 40px;
+                            height: 40px;
+                        }
+
+                        nav {
+                            ul {
+                                display: flex;
+
+                                li {
+                                    list-style: none;
+                                    margin-right: 20px;
+                                    color: var(--link-color);
+
+                                    &:hover {
+                                        color: var(--link-hovered-color);
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    .main-wrapper {
+                        display: flex;
+                        flex: 1;
+
+                        aside {
+                            width: 200px;
+                            background-color: orange;
+                            writing-mode: vertical-lr;
+                            letter-spacing: 6px;
+                        }
+
+                        main {
+                            flex: 1;
+                            background-color: lightslategray;
+                        }
+                    }
+
+                    footer {
+                        background-color: black;
+
+                        ul {
+                            display: flex;
+
+                            li {
+                                list-style: none;
+                                color: var(--link-color);
+
+                                &:hover {
+                                    color: var(--link-hovered-color);
+                                }
+
+                                &:not(:last-child) {
+                                    margin-right: 10px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <img
+                class="avatar"
+                src="https://p6-passport.byteacctimg.com/img/user-avatar/b4ad31b0fdc0dac5a51fda622e3e021d~80x80.awebp"
+                alt="avatar"
+            />
+            <nav>
+                <ul>
+                    <li>首页</li>
+                    <li>排行榜</li>
+                    <li>关于</li>
+                </ul>
+            </nav>
+        </header>
+        <div class="main-wrapper">
+            <aside>侧边栏</aside>
+            <main>
+                <article>
+                    <header>文章标题</header>
+                    <section>
+                        <h2>第一段标题</h2>
+                        <p>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae, iste
+                            quidem nemo corrupti, ullam mollitia explicabo ipsam commodi dolore
+                            exercitationem repudiandae quasi sit minima rem magnam ab provident.
+                            Error, nesciunt.
+                        </p>
+                    </section>
+                    <section>
+                        <h2>第二段标题</h2>
+                        <p>
+                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Facere aperiam
+                            nemo facilis minus deleniti accusamus iste sequi tempore omnis nobis ab
+                            itaque qui expedita, id sunt autem, unde possimus aspernatur!
+                        </p>
+                        <figure>
+                            <img
+                                width="200"
+                                src="https://w.wallhaven.cc/full/p9/wallhaven-p9m13e.png"
+                            />
+                            <figcaption>芙莉莲</figcaption>
+                        </figure>
+                        <p>The concert starts at <time>20:00</time>.</p>
+
+                        <p>
+                            The concert took place on
+                            <time datetime="2001-05-15 19:00">May 15</time>.
+                        </p>
+                        这是<mark>关键字</mark>
+                    </section>
+                </article>
+            </main>
+        </div>
+
+        <footer>
+            <ul>
+                <li>帮助</li>
+                <li>举报</li>
+                <li>用户反馈</li>
+                <li>企业推广</li>
+            </ul>
+        </footer>
+    </body>
+</html>

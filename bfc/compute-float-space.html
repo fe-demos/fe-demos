@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>利用 bfc 使得浮动子元素参与父容器高度计算</title>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+            }
+
+            .container {
+                display: flow-root;
+                margin: 60px auto;
+                width: 600px;
+                border: 1px solid black;
+                background-color: lightblue;
+
+                .child1 {
+                    width: 150px;
+                    height: 150px;
+                    background-color: dodgerblue;
+                }
+
+                .child2 {
+                    width: 100px;
+                    height: 400px;
+                    float: right;
+                    background-color: green;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="child1"></div>
+            <div class="child2"></div>
+        </div>
+    </body>
+</html>

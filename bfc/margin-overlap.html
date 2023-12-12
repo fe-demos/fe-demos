@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>BFC 解决父子容器相邻 margin 重叠问题</title>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+            }
+
+            .container {
+                /* display: flow-root; */
+                margin: 60px auto;
+                width: 600px;
+                height: 400px;
+                background-color: lightblue;
+                /* 如果存在边框也不会重叠 */
+                /* border: 1px solid black; */
+
+                .child {
+                    width: 150px;
+                    height: 150px;
+                    background-color: red;
+                    margin-top: 80px;
+                    margin-bottom: 20px;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="child"></div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>浮动实现三列布局</title>
+    </head>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            width: 100vw;
+            height: 100vh;
+        }
+
+        .left {
+            width: 200px;
+            height: 100vh;
+            float: left;
+            background-color: red;
+        }
+
+        .middle {
+            float: left;
+            width: calc(100vw - 400px);
+            height: 100vh;
+            background-color: yellow;
+        }
+
+        .right {
+            width: 200px;
+            height: 100vh;
+            float: right;
+            background-color: blue;
+        }
+    </style>
+    <body>
+        <aside class="left"></aside>
+        <main class="middle"></main>
+        <aside class="right"></aside>
+    </body>
+</html>

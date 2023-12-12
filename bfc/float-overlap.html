@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>bfc 彼此之间不会重叠</title>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+            }
+
+            .container {
+                margin: 60px auto;
+                width: 600px;
+                border: 1px solid black;
+                background-color: lightblue;
+
+                .child1 {
+                    width: 150px;
+                    height: 150px;
+                    background-color: dodgerblue;
+                    float: left;
+                }
+
+                .child2 {
+                    width: 100px;
+                    height: 400px;
+                    background-color: green;
+                    /* 下面两种方法都可以构造 bfc */
+                    /* float: left; */
+                    /* display: flow-root; */
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="child1"></div>
+            <div class="child2"></div>
+        </div>
+    </body>
+</html>

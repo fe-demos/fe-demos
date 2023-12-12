@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>flex 布局实现三列布局</title>
+    </head>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+        }
+
+        .left {
+            width: 200px;
+            background-color: red;
+        }
+
+        .middle {
+            flex: 1;
+            background-color: yellow;
+        }
+
+        .right {
+            width: 200px;
+            background-color: blue;
+        }
+    </style>
+    <body>
+        <aside class="left"></aside>
+        <main class="middle"></main>
+        <aside class="right"></aside>
+    </body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Local Storage</title>
+    </head>
+    <body>
+        <script>
+            localStorage.clear();
+            // 测试能存储的最大大小
+            // 所有的 key/value 字符串一起，整个 localStorage 最多存 5Mb，超过最大限制设置失败报错
+            // 和 cookie 有点不一样的是 cookie 是单个 key/value 限制 4k + 1byte
+            let value = Array.from({ length: 1024 * 1024 * 5 - 2 }, () => 'a').join('') + 'e';
+            const key = 'k';
+            localStorage.setItem(key, value);
+            console.log(localStorage.getItem(key).at(-1));
+        </script>
+    </body>
+</html>

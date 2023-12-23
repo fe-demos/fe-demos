@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>使用文档碎片一次性添加</title>
+    </head>
+    <body>
+        <button class="add-items">add</button>
+        <ul></ul>
+        <script>
+            const ul = document.querySelector('ul');
+            const addButton = document.querySelector('button');
+            addButton.addEventListener('click', () => {
+                const fragment = document.createDocumentFragment();
+                const dataList = Array.from({ length: 10 }, (value, index) => `item-${index + 1}`);
+                for (const e of dataList) {
+                    const li = document.createElement('li');
+                    li.textContent = e;
+                    fragment.appendChild(li);
+                }
+                ul.appendChild(fragment);
+            });
+        </script>
+    </body>
+</html>

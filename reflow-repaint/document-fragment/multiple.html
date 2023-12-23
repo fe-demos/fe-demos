@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>多次添加列表元素</title>
+    </head>
+    <body>
+        <button class="add-items">add</button>
+        <ul></ul>
+        <script>
+            const ul = document.querySelector('ul');
+            const addButton = document.querySelector('button');
+            addButton.addEventListener('click', () => {
+                const dataList = Array.from({ length: 100 }, (value, index) => `item-${index + 1}`);
+                for (const [index, e] of dataList.entries()) {
+                    const li = document.createElement('li');
+                    li.textContent = e;
+                    ul.appendChild(li);
+                }
+                // const dataList = Array.from({ length: 100 }, (value, index) => `item-${index + 1}`);
+                // for (const [index, e] of dataList.entries()) {
+                //     setTimeout(() => {
+                //         const li = document.createElement('li');
+                //         li.textContent = e;
+                //         ul.appendChild(li);
+                //     }, 10 * index);
+                // }
+            });
+        </script>
+    </body>
+</html>

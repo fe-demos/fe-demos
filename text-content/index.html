@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <div class="text">
+            <span style="display: none">隐藏文本</span>
+            <style>
+                .text {
+                    color: red;
+                }
+            </style>
+            666
+        </div>
+
+        <div>innerText: <span class="inner-text"></span></div>
+        <div>textContent: <span class="text-content"></span></div>
+        <script>
+            const innerTextSpan = document.querySelector('span.inner-text');
+            const textContentSpan = document.querySelector('span.text-content');
+
+            innerTextSpan.innerText = '        \n左边有空格';
+            textContentSpan.textContent = '        \n左边有空格';
+
+            // 会触发回流
+            const textElement = document.querySelector('div.text');
+            console.log('innerHtml:', textElement.innerHTML);
+            console.log('innerText:', textElement.innerText);
+            console.log('textContent:', textElement.textContent);
+
+            /*
+            总结：
+            getter: 
+                innerText 获取到的是用户看到的文本，或者说选中复制元素得到的文本
+                textContent 获取到的是 innerHtml 去除掉标签, 它还可以获取 style 和 script 标签内容
+
+                setter:
+                    innerText: 当你设置的文档前面包含换行符，为了换行效果，会将前后换行符转换为 br
+                    textContent: 直接在标签内嵌入指定的文本，前后空白符就和你直接写 html 一样不会渲染
+            */
+        </script>
+    </body>
+</html>

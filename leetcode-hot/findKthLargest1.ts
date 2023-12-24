@@ -1,3 +1,6 @@
+/**
+ * 时间复杂度：n * k
+ */
 export function findKthLargest1(nums: number[], k: number): number {
     const sortedK = Array.from({ length: k }, () => -Infinity);
 

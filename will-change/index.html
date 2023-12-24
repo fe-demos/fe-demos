@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>will change</title>
+        <style>
+            .box {
+                width: 100px;
+                height: 100px;
+                background-color: red;
+                /* 能触发硬件加速的三个 CSS 属性 */
+                /* opacity: 0.5; */
+                /* filter: blur(); */
+                /* transform: scale(2, 2); */
+                /* 元素将会被放到单独的合成层渲染 */
+                will-change: transform;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="box"></div>
+    </body>
+</html>

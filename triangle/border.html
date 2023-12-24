@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>使用 border 实现三角形</title>
+        <style>
+            .triangle {
+                width: 0;
+                height: 0;
+                /* 左右边框是决定底边长度的 */
+                border-left: 50px solid transparent;
+                border-right: 50px solid transparent;
+                /* 上下边框决定高度 */
+                border-top: 100px solid transparent;
+                border-bottom: 100px solid yellow;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="triangle"></div>
+    </body>
+</html>

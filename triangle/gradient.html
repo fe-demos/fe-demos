@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>渐变实现三角形</title>
+        <style>
+            .triangle {
+                width: 100px;
+                height: 100px;
+                /* background: linear-gradient(45deg, red, green); */
+                /* background: linear-gradient(red, green); */
+                /* background: linear-gradient(0deg, blue, green 40%, red); */
+                /* background: linear-gradient(red, transparent); */
+
+                /* 等腰三角形，腰长 */
+                background: linear-gradient(
+                    45deg,
+                    red 0%,
+                    red 50%,
+                    transparent 50%,
+                    transparent 100%
+                );
+            }
+        </style>
+    </head>
+    <body>
+        <div class="triangle"></div>
+    </body>
+</html>

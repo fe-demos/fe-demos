@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Mutation Observer</title>
+    </head>
+    <body>
+        <div class="container">
+            <div><span class="text">666</span></div>
+            <button class="hide">隐藏文字</button>
+        </div>
+        <script>
+            // 基本使用
+            const text = document.querySelector('.text');
+            const hideBtn = document.querySelector('.hide');
+            hideBtn.addEventListener('click', () => {
+                text.textContent = '999';
+                // text.remove();
+                // setTimeout(() => {
+                //     hideBtn.setAttribute('a', 'b');
+                // });
+            });
+
+            const observer = new MutationObserver((e) => {
+                console.log(e);
+            });
+
+            observer.observe(document.querySelector('.container'), {
+                // 是否对子树所有节点监听
+                subtree: true,
+                // 监听节点的增删
+                childList: true,
+                // 监听属性变化
+                attributes: true,
+            });
+        </script>
+
+        <script type="module">
+            // 模拟 nextTick
+
+            async function nextTick(callback) {
+                const { promise, resolve, reject } = Promise.withResolvers();
+
+                const observer = new MutationObserver(() => {
+                    observer.takeRecords();
+                    observer.disconnect();
+                    resolve();
+                });
+
+                const textNode = document.createElement('span');
+                textNode.style.display = 'none';
+                document.body.append(textNode);
+
+                observer.observe(textNode, {
+                    childList: true,
+                });
+                textNode.textContent = '999';
+
+                promise.then(() => callback());
+            }
+
+            setTimeout(() => {
+                console.log('setTimeout');
+            }, 0);
+
+            await nextTick(() => {
+                console.log(123);
+            });
+        </script>
+    </body>
+</html>

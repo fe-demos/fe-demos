@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Data API</title>
+        <style>
+            .root[data-theme='red'] {
+                color: red;
+            }
+
+            .root[data-theme='blue'] {
+                color: blue;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="root">
+            <p>
+                问君能有几多愁，<br />
+                恰似一江春水向东流...
+            </p>
+            <button>Toggle theme</button>
+        </div>
+        <script>
+            /** @type {HTMLDivElement} */
+            const root = document.querySelector('.root');
+            console.log(root.dataset);
+            root.dataset.theme = 'red';
+            console.log(root.dataset);
+
+            const btn = document.querySelector('button');
+            btn.addEventListener('click', () => {
+                root.dataset.theme = root.dataset.theme === 'red' ? 'blue' : 'red';
+            });
+        </script>
+    </body>
+</html>

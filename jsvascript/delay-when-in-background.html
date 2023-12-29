@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>测试网页再后台时的延迟</title>
+    </head>
+    <body>
+        <!-- setTimeout -->
+        <script>
+            document.addEventListener('visibilitychange', (event) => {
+                console.log('visibility:', document.visibilityState);
+                if (document.visibilityState === 'hidden') {
+                    let start = Date.now();
+                    setTimeout(() => {
+                        console.log(
+                            'setTimeout callback trigger after:' + (Date.now() - start) + 'ms',
+                        );
+                    }, 200);
+                    // 基本上都大于 200ms
+                }
+            });
+        </script>
+
+        <!-- setInterval -->
+        <script type="module">
+            // let last = Date.now();
+            // setInterval(function () {
+            //     const now = Date.now();
+            //     console.log('Interval firing after ' + (now - last));
+            //     last = now;
+            // }, 1000);
+
+            // 奇葩的是在 chrome 下间隔会小于 1000
+        </script>
+
+        <script type="module">
+            async function getFps() {
+                const { promise, resolve, reject } = Promise.withResolvers();
+                let start = Date.now();
+                let renderFrameCount = 0;
+                const callback = () => {
+                    renderFrameCount++;
+                    if (Date.now() - start >= 1000) {
+                        resolve(renderFrameCount);
+                    }
+                    requestAnimationFrame(callback);
+                };
+                requestAnimationFrame(callback);
+                return promise;
+            }
+
+            while (true) {
+                console.log('FPS: ' + (await getFps()));
+            }
+
+            // 进入后台， raf 根本不执行
+        </script>
+
+        <script type="module">
+            const timerWorker = new Worker('./timer-worker.js');
+            timerWorker.postMessage({
+                type: 'setInterval',
+                duration: 1000,
+            });
+
+            let last = Date.now();
+            timerWorker.addEventListener('message', (event) => {
+                if (event.data === 'setIntervalTrigger') {
+                    const now = Date.now();
+                    console.log('worker setInterval trigger after ' + (now - last));
+                    last = now;
+                }
+            });
+            // worker 线程定时器在后台不受影响
+        </script>
+    </body>
+</html>

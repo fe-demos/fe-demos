@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>DOM 事件模型</title>
+        <style>
+            .parent {
+                margin: 60px auto 0;
+                width: 200px;
+                height: 150px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background-color: lightgreen;
+
+                .child {
+                    width: 100px;
+                    height: 100px;
+                    background-color: lightblue;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="parent">
+            <div class="child">child</div>
+        </div>
+        <script>
+            const parent = document.querySelector('.parent');
+            const child = document.querySelector('.child');
+
+            // capture
+            parent.addEventListener(
+                'click',
+                () => {
+                    console.log('capture parent');
+                },
+                true,
+            );
+            child.addEventListener(
+                'click',
+                () => {
+                    console.log('capture child');
+                },
+                true,
+            );
+
+            // bubble
+            child.addEventListener('click', () => {
+                console.log('bubble child');
+            });
+            parent.addEventListener('click', () => {
+                console.log('bubble parent');
+            });
+
+            // capture parent
+            // capture child
+            // bubble child
+            // bubble parent
+        </script>
+    </body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>addEventListener options</title>
+        <style>
+            .container {
+                width: 60px;
+                height: 100px;
+                margin-top: 20px;
+                border: 1px solid black;
+                overflow: scroll;
+            }
+        </style>
+    </head>
+    <body>
+        <button class="once">once</button>
+        <button class="signal">signal</button>
+        <div class="container">
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Earum ipsam eligendi quas
+            atque voluptatum, ad ea eum iure autem. Velit temporibus natus nam labore dolor nostrum
+            quod, minus cumque dicta! Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+            Minus placeat voluptatum repellat aliquam natus consequuntur, odio facilis similique
+            ratione aliquid itaque laborum quia ea dolore est nostrum, autem doloremque? Modi?
+        </div>
+        <script>
+            const onceBtn = document.querySelector('.once');
+            onceBtn.addEventListener(
+                'click',
+                () => {
+                    alert('once');
+                },
+                { once: true },
+            );
+
+            const signalBtn = document.querySelector('.signal');
+            signalBtn.addEventListener(
+                'click',
+                () => {
+                    alert('signal');
+                },
+                { signal: AbortSignal.abort() },
+            );
+
+            const container = document.querySelector('.container');
+            container.addEventListener(
+                'scroll',
+                (e) => {
+                    // e.preventDefault();
+                    console.log('scroll');
+                },
+                // 告诉浏览器不会在回调中触发 preventDefault，你放心滚动
+                // 调用 preventDefault 会报错
+                { passive: true },
+            );
+
+            container.addEventListener(
+                'mousewheel',
+                (e) => {
+                    // e.preventDefault();
+                    const start = Date.now();
+                    // 回调不会阻塞滚动
+                    while (true) {
+                        if (Date.now() - start > 3000) {
+                            break;
+                        }
+                    }
+                },
+                {
+                    passive: true,
+                },
+            );
+        </script>
+    </body>
+</html>

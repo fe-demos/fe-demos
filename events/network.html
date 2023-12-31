@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>网络变化</title>
+    </head>
+    <body>
+        <div>网络情况：<span class="network-condition"></span></div>
+        <div>网络类型：<span class="network-type"></span></div>
+        <div>带宽： <span class="bandwidth"></span></div>
+        <div>网络延迟： <span class="rtt"></span></div>
+
+        <script>
+            // https://caniuse.com/?search=navigator%20connection
+            // https://wicg.github.io/netinfo/#connection-attribute
+
+            function updateNetworkInfo() {
+                document.querySelector('.network-condition').textContent = navigator.onLine
+                    ? 'online'
+                    : 'offline';
+                const { connection } = navigator;
+                document.querySelector('.network-type').textContent = connection.effectiveType;
+                document.querySelector('.bandwidth').textContent = connection.downlink + 'MB';
+                document.querySelector('.rtt').textContent = connection.rtt + 'ms';
+            }
+            updateNetworkInfo();
+
+            window.addEventListener('online', (e) => {
+                updateNetworkInfo();
+            });
+
+            window.addEventListener('offline', (e) => {
+                updateNetworkInfo();
+            });
+
+            navigator.connection.addEventListener('change', (e) => {
+                updateNetworkInfo();
+            });
+        </script>
+    </body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <p class="poem">
+            春花秋月何时了？<br />
+            往事知多少。<br />
+            小楼昨夜又东风，故国不堪回首月明中。<br />
+            雕栏玉砌应犹在，只是朱颜改。<br />
+            问君能有几多愁？<br />
+            恰似一江春水向东流。<br />
+        </p>
+
+        <script>
+            console.log(123);
+
+            /** @type {HTMLParagraphElement} */
+            const poem = document.querySelector('.poem');
+            poem.addEventListener('copy', (e) => {
+                e.preventDefault();
+            });
+
+            poem.addEventListener('selectstart', (e) => {
+                e.preventDefault();
+            });
+        </script>
+    </body>
+</html>

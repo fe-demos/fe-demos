@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <script>
+            window.addEventListener('storage', (event) => {
+                if (event.key === 'sendMessage') {
+                    console.log('received', event.newValue);
+                }
+            });
+
+            setTimeout(() => {
+                localStorage.setItem('sendMessage', Math.floor(11 * Math.random()));
+            }, 3000);
+        </script>
+    </body>
+</html>

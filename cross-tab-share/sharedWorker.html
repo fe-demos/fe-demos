@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <script>
+            const worker = new SharedWorker('./shareWorker.js');
+
+            worker.port.addEventListener('message', (event) => {
+                console.log('received', event.data);
+            });
+            worker.port.start();
+
+            worker.port.postMessage('大家好啊！');
+        </script>
+    </body>
+</html>

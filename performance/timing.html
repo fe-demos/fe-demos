@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+    <script>
+        // https://juejin.cn/post/6844904029936418824?searchId=20240101164742FB8974F697118A9FCF36
+        // https://juejin.cn/post/7089241058508275725?searchId=202401011624363A0F11E347BDD364BECD
+
+        const start = performance.timing.navigationStart;
+        console.log('parse DOM start', performance.now() - start);
+
+        const logEvent = (e) => {
+            console.log(e.type, performance.now() - start, e);
+        };
+
+        window.addEventListener('DOMContentLoaded', (e) => {
+            logEvent(e);
+        });
+
+        window.addEventListener('load', (e) => {
+            logEvent(e);
+
+            const { timing } = performance;
+
+            console.log('navigationStart', timing.navigationStart - start);
+            console.log('fetchStart', timing.fetchStart - start);
+            console.log('domainLookupStart', timing.domainLookupStart - start);
+            console.log('domainLookupEnd', timing.domainLookupEnd - start);
+            console.log('requestStart', timing.requestStart - start);
+            console.log('responseStart', timing.responseStart - start);
+            console.log('responseEnd', timing.responseEnd - start);
+        });
+
+        const timer = setInterval(() => {
+            const paintTimings = performance.getEntriesByType('paint');
+            if (paintTimings.length === 0) return;
+
+            console.log('FP:', paintTimings.find(({ name }) => name === 'first-paint').startTime);
+            console.log(
+                'FCP:',
+                paintTimings.find(({ name }) => name === 'first-contentful-paint').startTime,
+            );
+            const observer = new PerformanceObserver((list) => {
+                const entries = list.getEntries();
+                const lastEntry = entries[entries.length - 1]; // Use the latest LCP candidate
+                console.log('LCP:', lastEntry.startTime);
+                observer.disconnect();
+            });
+            observer.observe({ type: 'largest-contentful-paint', buffered: true });
+            clearInterval(timer);
+        }, 30);
+    </script>
+    <link rel="stylesheet" href="./reset.css" />
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Performance</title>
+    </head>
+    <body>
+        <p>Performance</p>
+        <img
+            src="https://developer.mozilla.org/en-US/docs/Web/API/PerformanceNavigationTiming/timestamp-diagram.svg"
+            alt="timing"
+        />
+    </body>
+</html>

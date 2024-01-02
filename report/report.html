@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>埋点</title>
+    </head>
+    <body>
+        <h2>测试埋点</h2>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        <script>
+            let order = 0;
+
+            const logEvent = (e) => {
+                console.log(e.type, ++order);
+                localStorage.setItem(e.type, order);
+            };
+
+            // 这个事件会触发，但是基本上没有啥好办法一定能在用户刷新或关闭网页前阻止用户
+            window.addEventListener('beforeunload', (e) => {
+                logEvent(e);
+
+                // // 测试发现不能阻止页面关闭
+                // // Cancel the event as stated by the standard.
+                // event.preventDefault();
+
+                // const message = '确认关闭？';
+                // // 也没有用
+                // // Chrome requires returnValue to be set.
+                // event.returnValue = message;
+
+                // const select = confirm(message);
+                // if (select) {
+                //     window.close();
+                // }
+
+                // // 返回值也没有用
+                // return message;
+            });
+
+            // 就没见触发过
+            window.addEventListener('close', (e) => {
+                logEvent(e);
+            });
+
+            const start = Date.now();
+            const report = () => {
+                const data = {
+                    stayTime: Date.now() - start,
+                };
+                sendAnalyzeByFetch(data);
+                sendAnalyzeData(data);
+                sendAnalyzeBySyncXHR(data);
+            };
+
+            window.addEventListener('unload', (e) => {
+                logEvent(e);
+            });
+
+            window.addEventListener('pageshow', (e) => {
+                // logEvent(e);
+            });
+
+            window.addEventListener('pagehide', (e) => {
+                logEvent(e);
+            });
+
+            document.addEventListener('visibilitychange', (e) => {
+                logEvent(e);
+                if (document.visibilityState === 'hidden') {
+                    report();
+                }
+            });
+
+            // 执行顺序: beforeunload -> pagehide -> visibilitychange -> unload
+            function sendAnalyzeData(data) {
+                const headers = {
+                    type: 'application/json',
+                };
+                const blob = new Blob([JSON.stringify(data)], headers);
+                // 有跨域限制
+                navigator.sendBeacon('http://127.0.0.1:1027/sendBeacon', blob);
+            }
+
+            // 在 chrome 中关闭 tab 和刷新都不会发送成功
+            function sendAnalyzeByFetch(data) {
+                fetch('http://127.0.0.1:1027/fetch', {
+                    method: 'POST',
+                    body: JSON.stringify(data),
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                });
+            }
+
+            // 在 chrome 中关闭 tab 和刷新都不会发送成功
+            function sendAnalyzeBySyncXHR(data) {
+                const xhr = new XMLHttpRequest();
+                // 第三个参数表示是否使用同步
+                xhr.open('POST', 'http://127.0.0.1:1027/sync-xhr', false);
+                xhr.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
+                xhr.send(JSON.stringify(data));
+            }
+        </script>
+    </body>
+</html>

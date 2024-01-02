@@ -5,10 +5,10 @@
         // https://juejin.cn/post/7089241058508275725?searchId=202401011624363A0F11E347BDD364BECD
 
         const start = performance.timing.navigationStart;
-        console.log('parse DOM start', performance.now() - start);
+        console.log('parse DOM start', Date.now() - start);
 
         const logEvent = (e) => {
-            console.log(e.type, performance.now() - start, e);
+            console.log(e.type, Date.now() - start, e);
         };
 
         window.addEventListener('DOMContentLoaded', (e) => {
@@ -29,6 +29,10 @@
             console.log('responseEnd', timing.responseEnd - start);
         });
 
+        // pageSHow 在 load 事件之后触发
+        window.addEventListener('pageshow', (e) => {
+            logEvent(e);
+        });
         const timer = setInterval(() => {
             const paintTimings = performance.getEntriesByType('paint');
             if (paintTimings.length === 0) return;

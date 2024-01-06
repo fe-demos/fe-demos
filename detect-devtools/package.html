@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <script type="module">
+            // 原理还是检测 window.innerWidth 和 outerWidth 差值有没有大于阈值
+            // https://github.com/sindresorhus/devtools-detect/blob/main/index.js#L26
+            import devtools from 'https://cdn.jsdelivr.net/npm/devtools-detect@4.0.1/+esm';
+
+            // Check if it's open
+            console.log('Is DevTools open:', devtools.isOpen);
+
+            // Check it's orientation, `undefined` if not open
+            console.log('DevTools orientation:', devtools.orientation);
+
+            // Get notified when it's opened/closed or orientation changes
+            window.addEventListener('devtoolschange', (event) => {
+                console.log('Is DevTools open:', event.detail.isOpen);
+                console.log('DevTools orientation:', event.detail.orientation);
+            });
+        </script>
+    </body>
+</html>

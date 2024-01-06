@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <script>
+            if (window.outerWidth - window.innerWidth > 100) {
+                console.log('你打开了 devtools');
+            }
+            // 不准，这个宽度差有可能是打开侧边栏，当使用悬浮模式也检查不出来
+        </script>
+    </body>
+</html>

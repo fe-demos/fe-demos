@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>RAF</title>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+            }
+
+            body {
+                width: 100vw;
+                height: 100vh;
+
+                .box {
+                    position: absolute;
+                    left: 20px;
+                    margin-top: 60px;
+                    width: 100px;
+                    height: 100px;
+                    background-color: green;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="box"></div>
+        <script>
+            const box = document.querySelector('.box');
+            // 3000ms, 600px
+            let start = performance.now();
+            const animate = (now) => {
+                const duration = performance.now() - start;
+                const offset = Math.min((duration / 3000) * 600, 600);
+                box.style.transform = `translate3D(${20 + offset + 'px'}, 0, 0)`;
+                if (offset !== 600) {
+                    requestAnimationFrame(animate);
+                }
+            };
+            requestAnimationFrame(animate);
+        </script>
+    </body>
+</html>

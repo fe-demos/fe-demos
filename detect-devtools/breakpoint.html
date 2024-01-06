@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>breakpoint</title>
+    </head>
+    <body>
+        <script>
+            setInterval(() => {
+                const start = Date.now();
+                debugger;
+                // 用户点击 resume 后时间差比较大，这种方式比较影响用户
+                if (Date.now() - start > 100) {
+                    console.log('你打开了 Devtools');
+                }
+            }, 10);
+        </script>
+    </body>
+</html>

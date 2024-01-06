@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>toString</title>
+    </head>
+    <body>
+        <script>
+            // ref: https://3water.com/article/3NzA15MjUu
+            const obj = /./;
+            console.log(obj);
+            obj.toString = () => {
+                alert('你打开了 devtools');
+            };
+            // 打开 devtools 的时候不会执行已 log 对象 toString
+        </script>
+    </body>
+</html>

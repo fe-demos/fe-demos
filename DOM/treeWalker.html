@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="icon" href="data:," />
+        <title>treeWorker</title>
+    </head>
+    <body>
+        <div>
+            <h2>
+                <span>第一段文字</span>
+                第二段文字
+            </h2>
+        </div>
+        <p>长风破浪会有时</p>
+
+        <script>
+            const treeWalker = document.createTreeWalker(
+                document.body,
+                NodeFilter.SHOW_TEXT,
+                (node) => {
+                    return node.parentElement.nodeName == 'SCRIPT'
+                        ? NodeFilter.FILTER_SKIP
+                        : NodeFilter.FILTER_ACCEPT;
+                },
+            );
+            while (treeWalker.nextNode()) {
+                const text = treeWalker.currentNode.data;
+                if (text.trim() !== '') {
+                    console.log(text);
+                }
+            }
+        </script>
+    </body>
+</html>

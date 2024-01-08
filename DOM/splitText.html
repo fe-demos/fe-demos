@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>textNode.splitText</title>
+    </head>
+    <body>
+        <p>长风破浪会有时</p>
+        <script>
+            /** @type {HTMLParagraphElement} */
+            const p = document.querySelector('p');
+            console.log(p.childNodes.length); // => 1
+            /** @type {Text} */
+            const textNode = p.firstChild;
+            // 从某个下标断开文本节点，返回的是 slice(offset)，原节点变为 slice(0, offset)
+            const restTextNode = textNode.splitText(2);
+            console.log(textNode.data); // 长风
+            console.log(p.childNodes.length); // 2
+
+            const highlight = document.createElement('span');
+            highlight.style.color = 'yellow';
+            highlight.appendChild(textNode);
+
+            p.insertBefore(highlight, restTextNode);
+        </script>
+    </body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>scrollWidth</title>
+        <style>
+            .container {
+                width: 100px;
+                background-color: lightblue;
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            这是一段很长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长的文字
+        </div>
+        <input type="range" min="100" , max="1000" /> <span>100</span>
+        <script>
+            /** @type {HTMLDivElement} */
+            const container = document.querySelector('.container');
+            function checkOverflow() {
+                const isOverflow = container.scrollWidth > container.clientWidth;
+                console.log(isOverflow);
+            }
+
+            const input = document.querySelector('input');
+            const span = document.querySelector('span');
+            input.addEventListener('change', () => {
+                const width = input.value;
+                container.style.width = width + 'px';
+                span.textContent = width;
+                checkOverflow();
+            });
+        </script>
+    </body>
+</html>

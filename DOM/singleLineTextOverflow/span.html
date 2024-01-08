@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>span</title>
+        <style>
+            .container {
+                width: 100px;
+                background-color: lightblue;
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+
+                .text {
+                    display: inline-block;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <span class="text"
+                >这是一段很长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长的文字</span
+            >
+        </div>
+        <input type="range" min="100" , max="1000" /> <span class="width">100</span>
+        <script>
+            // 实际应用时需要 clone container，使用隐藏节点来计算
+
+            /** @type {HTMLDivElement} */
+            const container = document.querySelector('.container');
+            const textSpan = document.querySelector('.text');
+            function checkOverflow() {
+                const isOverflow = textSpan.clientWidth > container.clientWidth;
+                console.log(isOverflow);
+            }
+
+            const input = document.querySelector('input');
+            const widthSpan = document.querySelector('.width');
+            input.addEventListener('change', () => {
+                const width = input.value;
+                container.style.width = width + 'px';
+                widthSpan.textContent = width;
+                checkOverflow();
+            });
+        </script>
+    </body>
+</html>

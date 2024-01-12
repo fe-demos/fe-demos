@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Popover Basic</title>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+            }
+
+            .btn {
+                width: 120px;
+                height: 40px;
+                margin-top: 60px;
+                margin-left: 20px;
+            }
+
+            /* 默认屏幕居中显示，fixed 定位 */
+            #wallpapper {
+                left: 20px;
+                top: 110px;
+            }
+        </style>
+    </head>
+    <body>
+        <button class="btn" popovertarget="wallpapper">open popover</button>
+        <img
+            id="wallpapper"
+            popover
+            w="600"
+            height="400"
+            src="https://w.wallhaven.cc/full/85/wallhaven-8586my.png"
+        />
+    </body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Popover</title>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            #wrapper {
+                display: grid;
+                width: 100vw;
+                height: 100vh;
+                grid-template-rows: repeat(3, 1fr);
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .select {
+                display: grid;
+                grid-column-start: 2;
+                grid-row-start: 2;
+                place-items: center;
+
+                .btn {
+                    padding: 0.5em;
+                    color: red;
+                    display: block;
+                    anchor-name: --btn;
+                }
+            }
+
+            menu.options {
+                inset-inline-start: anchor(0%);
+                inset-block-start: anchor(100%);
+                min-width: anchor-size(--btn width);
+
+                li {
+                    list-style: none;
+                    &:has(input:checked) {
+                        background-color: #ccc;
+                    }
+                    label {
+                        display: block;
+                        width: 100%;
+                        padding: 0.5em;
+                    }
+                    input[type='radio'] {
+                        display: none;
+                    }
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div id="wrapper">
+            <div class="select">
+                <button id="btn" class="btn" popovertarget="options">select some option</button>
+            </div>
+            <menu id="options" class="options" popover anchor="btn" onclick="menuSel()">
+                <li class="option">
+                    <label><input type="radio" name="type" value="" />option none</label>
+                </li>
+                <li class="option">
+                    <label><input type="radio" name="type" value="1" />option 1</label>
+                </li>
+                <li class="option">
+                    <label><input type="radio" name="type" value="2" />option 2</label>
+                </li>
+                <li class="option">
+                    <label><input type="radio" name="type" value="3" />option 3</label>
+                </li>
+                <li class="option">
+                    <label><input type="radio" name="type" value="4" />option 4</label>
+                </li>
+                <li class="option">
+                    <label><input type="radio" name="type" value="5" />option 5</label>
+                </li>
+            </menu>
+        </div>
+        <script>
+            function menuSel() {
+                if (options.querySelector('input:checked')) {
+                    const options = document.getElementById('options');
+                    const btn = document.getElementById('btn');
+                    const type = options.querySelector('input:checked').closest('li').textContent;
+                    btn.textContent = `selected: ${type}`;
+                    options.hidePopover();
+                }
+            }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,7 @@
+{
+    "include": ["./**/*.ts", "./**/*.js"],
+    "compilerOptions": {
+        "composite": true,
+        "lib": ["ESNext"]
+    }
+}

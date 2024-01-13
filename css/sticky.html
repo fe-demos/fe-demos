@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>sticky position</title>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+            }
+
+            ul {
+                height: 300px;
+                background-color: lightcyan;
+                list-style: none;
+                overflow: scroll;
+
+                li {
+                    background-color: red;
+                    display: block;
+                    height: 100px;
+
+                    &:first-child {
+                        position: sticky;
+                        top: 0;
+                        background-color: green;
+                    }
+
+                    &:last-child {
+                        position: sticky;
+                        bottom: 0;
+                        background-color: yellow;
+                    }
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <ul>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+        </ul>
+    </body>
+</html>

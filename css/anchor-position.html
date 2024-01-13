@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Anchor Position</title>
+        <style>
+            .anchor-element {
+                width: 200px;
+                height: 200px;
+                background-color: red;
+                anchor-name: --target;
+            }
+
+            .use-anchor {
+                position: absolute;
+                width: 60px;
+                height: 60px;
+                background-color: blue;
+                left: anchor(--target left);
+                top: anchor(--target bottom);
+            }
+        </style>
+    </head>
+    <body>
+        <div class="anchor-element"></div>
+        <div class="use-anchor"></div>
+    </body>
+</html>

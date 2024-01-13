@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>:is()</title>
+        <style>
+            /* https://developer.mozilla.org/zh-CN/docs/Web/CSS/:is */
+            ol {
+                list-style-type: upper-alpha;
+                color: darkblue;
+            }
+
+            :is(ol, ul, menu:unsupported) :is(ol, ul) {
+                color: green;
+            }
+
+            :is(ol, ul) :is(ol, ul) ol {
+                list-style-type: lower-greek;
+                color: chocolate;
+            }
+
+            :is(ol, ul) :is(ol, ul) ul {
+                color: brown;
+            }
+        </style>
+    </head>
+    <body>
+        <ol>
+            <li>Saturn</li>
+            <li>
+                <ul>
+                    <li>Mimas</li>
+                    <li>Enceladus</li>
+                    <li>
+                        <ol>
+                            <li>Voyager</li>
+                            <li>Cassini</li>
+                        </ol>
+                    </li>
+                    <li>Tethys</li>
+                    <li>
+                        <ul>
+                            <li>春</li>
+                            <li>夏</li>
+                            <li>秋</li>
+                            <li>冬</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li>Uranus</li>
+            <li>
+                <ol>
+                    <li>Titania</li>
+                    <li>Oberon</li>
+                </ol>
+            </li>
+        </ol>
+    </body>
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>ghost suggestion</title>
+        <style>
+            html {
+                height: 100%;
+            }
+
+            body {
+                background: #a7cfdf;
+                background: -moz-linear-gradient(-45deg, #a7cfdf 0%, #23538a 100%);
+                background: -webkit-linear-gradient(-45deg, #a7cfdf 0%, #23538a 100%);
+                background: linear-gradient(135deg, #a7cfdf 0%, #23538a 100%);
+                filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#a7cfdf", endColorstr="#23538a",GradientType=1 );
+                height: 100%;
+            }
+
+            .label {
+                font-size: 0.9em;
+                color: #19556d;
+            }
+
+            .wrap {
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+
+            .sayt {
+                width: 100%;
+                position: relative;
+                padding: 10px;
+                border: 1px solid #23538a;
+                display: inline-block;
+                border-radius: 3px;
+            }
+            .sayt__input {
+                background: none;
+                border: 0;
+                margin: 0;
+                outline: 0;
+                padding: 0;
+                position: relative;
+                width: 100%;
+                z-index: 10;
+            }
+            .sayt__suggestion {
+                color: #23538a;
+                position: absolute;
+                left: 10px;
+                top: 10px;
+                z-index: 5;
+            }
+            .sayt__input,
+            .sayt__suggestion {
+                font-family: 'SF Mono Light', monospace;
+                font-size: 16px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="wrap">
+            <span class="label">start typing...</span>
+            <div class="js-sayt sayt">
+                <input type="text" class="sayt__input" />
+                <span class="js-sayt-suggestion sayt__suggestion"></span>
+            </div>
+        </div>
+
+        <script>
+            const dictionary = [
+                'package.json',
+                'composer.json',
+                'computer',
+                'yarn.lock',
+                'composer.lock',
+                '.bashrc',
+                '.bash-profile',
+            ];
+
+            function closest(query, dictionary) {
+                let candidate = undefined;
+
+                for (const term of dictionary) {
+                    if (term.startsWith(query)) {
+                        if (!candidate || term.length < candidate.length) {
+                            candidate = term;
+                        }
+                    }
+                }
+
+                return candidate;
+            }
+
+            const sayt = document.querySelector('.js-sayt');
+            const suggestionOutput = document.querySelector('.js-sayt-suggestion');
+            let currentSuggestion = '';
+
+            function displaySuggestion(text = currentSuggestion) {
+                suggestionOutput.innerText = text;
+            }
+
+            sayt.addEventListener('keydown', (event) => {
+                if (event.key === 'Tab' && currentSuggestion.length) {
+                    event.preventDefault();
+
+                    event.target.value = currentSuggestion;
+                    currentSuggestion = '';
+                    displaySuggestion();
+                }
+            });
+
+            sayt.addEventListener('input', (event) => {
+                const input = event.target;
+                const value = input.value;
+
+                currentSuggestion = closest(value, dictionary);
+
+                if (value === '' || value === currentSuggestion || !currentSuggestion) {
+                    currentSuggestion = '';
+                }
+
+                displaySuggestion();
+            });
+        </script>
+    </body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>:has()</title>
+        <style>
+            label:has(input:checked) {
+                background-color: lightblue;
+            }
+
+            h1,
+            h2 {
+                margin: 0 0 1rem 0;
+            }
+
+            h1:has(+ h2) {
+                margin: 0 0 0.25rem 0;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- https://developer.mozilla.org/zh-CN/docs/Web/CSS/:has -->
+
+        <form>
+            <label><input name="lover" type="radio" value="三上悠亚" /> 三上悠亚</label>
+            <label><input name="lover" type="radio" value="河北彩花" /> 河北彩花</label>
+            <label><input name="lover" type="radio" value="樱空桃" /> 樱空桃</label>
+            <label><input name="lover" type="radio" value="明日花绮罗" /> 明日花绮罗</label>
+        </form>
+
+        <section>
+            <article>
+                <h1>Morning Times</h1>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                    incididunt ut labore et dolore magna aliqua.
+                </p>
+            </article>
+            <article>
+                <h1>Morning Times</h1>
+                <h2>Delivering you news every morning</h2>
+                <h1>bbx</h1>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                    incididunt ut labore et dolore magna aliqua.
+                </p>
+            </article>
+        </section>
+    </body>
+</html>

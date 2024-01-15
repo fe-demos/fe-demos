@@ -1,0 +1,25 @@
+{
+    "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
+    "linter": {
+        "enabled": true
+    },
+    "organizeImports": {
+        "enabled": true
+    },
+    "formatter": {
+        "enabled": true,
+        "indentStyle": "space",
+        "indentWidth": 4,
+        "lineWidth": 100
+    },
+    "javascript": {
+        "formatter": {
+            "quoteStyle": "single"
+        }
+    },
+    "json": {
+        "parser": {
+            "allowComments": true
+        }
+    }
+}

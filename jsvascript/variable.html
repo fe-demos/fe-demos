@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Variable</title>
+    </head>
+    <body>
+        <script>
+            // 后序的宏任务继续执行
+            setTimeout(() => {
+                // ReferenceError: Cannot access 'b' before initialization
+                // 从报错提示来看，b 还是变量提升了，只不过没初始化，存在暂时性死区，不能被使用
+                console.log(b);
+            });
+
+            setTimeout(() => {
+                // 没有报错说明 var 没法声明块级作用域变量
+                console.log(c);
+            });
+
+            // ReferenceError: a is not defined
+            // 从报错信息来看，let 确实可以声明块级作用域变量
+            console.log(a);
+            // 当前宏任务执行不会继续执行
+            console.log('不会执行');
+            {
+                let a = 1;
+                var c = 6;
+            }
+            let b = 2;
+        </script>
+    </body>
+</html>

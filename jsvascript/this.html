@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>this</title>
+    </head>
+    <body>
+        <script>
+            // 非严格模式下 this 指向 window
+            console.assert(this === window);
+
+            function logThis() {
+                return this;
+            }
+
+            console.assert(logThis() === window);
+        </script>
+
+        <script>
+            (function () {
+                'use strict';
+
+                function logThis() {
+                    return this;
+                }
+                // 严格模式下不同对象方法访问函数，this 指向 undefined
+                console.assert(logThis() === undefined);
+            })();
+        </script>
+
+        <script type="module">
+            // ES6 module 默认开启严格模式，并且按照规范 this 就是 undefined
+            // https://stackoverflow.com/questions/48670599/why-is-this-undefined-in-script-type-module
+            console.assert(this === window);
+            console.assert(logThis() === window);
+        </script>
+    </body>
+</html>

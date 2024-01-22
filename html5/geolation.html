@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>geolocation</title>
+    </head>
+    <body>
+        纬度：<span class="latitude"></span> 经度：<span class="longitude"></span>
+        <br />
+        <a href="">打开谷歌地图</a>
+        <script>
+            navigator.geolocation.getCurrentPosition((pos) => {
+                const 纬度 = pos.coords.latitude;
+                const 经度 = pos.coords.longitude;
+                document.querySelector('.latitude').textContent = 纬度;
+                document.querySelector('.longitude').textContent = 经度;
+                document.querySelector('a').href =
+                    `https://www.google.com.hk/maps/@${纬度},${经度}`;
+            });
+        </script>
+    </body>
+</html>

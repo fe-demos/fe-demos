@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Square</title>
+        <style>
+            .container {
+                width: 600px;
+                height: 600px;
+                margin: 60px auto;
+                background-color: lightgoldenrodyellow;
+
+                .square {
+                    width: 100%; /* 或其他百分比值 */
+                    padding-top: 100%; /* 使高度等于宽度 */
+                    position: relative;
+
+                    .content {
+                        position: absolute;
+                        inset: 0;
+                        background-color: lightpink;
+                    }
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="square">
+                <div class="content">我是一只鱼</div>
+            </div>
+        </div>
+    </body>
+</html>

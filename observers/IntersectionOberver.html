@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
@@ -88,6 +88,7 @@
                 {
                     // 默认为浏览器视口
                     root: gallery,
+                    threshold,
                 },
             );
             document.querySelectorAll('img').forEach((img) => observer.observe(img));

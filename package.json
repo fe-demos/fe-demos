@@ -16,13 +16,13 @@
         "koa-logger": "^3.2.1"
     },
     "devDependencies": {
-        "@biomejs/biome": "^1.5.1",
-        "@types/koa": "^2.13.12",
-        "@types/node": "^20.10.5",
+        "@biomejs/biome": "^1.5.3",
+        "@types/koa": "^2.14.0",
+        "@types/node": "^20.11.10",
         "@yutengjing/prettier-config": "^1.0.0",
-        "nodemon": "^3.0.2",
-        "prettier": "^3.2.2",
+        "nodemon": "^3.0.3",
+        "prettier": "^3.2.4",
         "tsx": "^4.7.0",
-        "typescript": "5.4.0-dev.20231229"
+        "typescript": "next"
     }
 }

@@ -2,6 +2,8 @@
     "include": ["./**/*.ts", "./**/*.js"],
     "compilerOptions": {
         "composite": true,
-        "lib": ["ESNext"]
+        "allowJs": true,
+        "lib": ["ESNext"],
+        "outDir": "./dist"
     }
 }

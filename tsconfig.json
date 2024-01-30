@@ -1,6 +1,6 @@
 {
     "include": ["**/*.ts", "**/*.js", "**/*.cjs", "**/*.mjs", "**/*.html"],
-    "exclude": ["leetcode-hot"],
+    "exclude": ["./leetcode-hot", "./typescript"],
     "compilerOptions": {
         /* Visit https://aka.ms/tsconfig to read more about this file */
 

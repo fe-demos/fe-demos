@@ -23,7 +23,7 @@ function transform(obj) {
 
 console.log(
     transform({
-        'A': 1,
+        A: 1,
         'B.C': 2,
         'B.D.E': 3,
         'CC.DD.EE': 4,

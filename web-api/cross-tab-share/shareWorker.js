@@ -7,12 +7,12 @@ self.onconnect = (event) => {
     connections.add(port);
 
     port.onmessage = (event) => {
-        [...connections].forEach((connection) => {
+        for (const connection of [...connections]) {
             try {
                 connection.postMessage(event.data);
             } catch {
                 connections.delete(connection);
             }
-        });
+        }
     };
 };

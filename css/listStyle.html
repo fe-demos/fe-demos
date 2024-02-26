@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            ol {
+                list-style: none;
+                counter-reset: c;
+            }
+
+            li::before {
+                counter-increment: c;
+                content: counters(c, '.') ' ';
+                color: #f44336;
+            }
+        </style>
+    </head>
+    <body>
+        <ol>
+            <li>BFE.dev</li>
+            <li>
+                JavaScript
+                <ol>
+                    <li>TypeScript</li>
+                    <li>Quiz</li>
+                    <li>
+                        Framework
+                        <ol>
+                            <li>React</li>
+                            <li>Vue.js</li>
+                        </ol>
+                    </li>
+                </ol>
+            </li>
+            <li>CSS</li>
+            <li>System Design</li>
+        </ol>
+    </body>
+</html>

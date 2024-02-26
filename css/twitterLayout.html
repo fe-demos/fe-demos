@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            * {
+                padding: 0;
+                margin: 0;
+            }
+            .container {
+                box-sizing: border-box;
+                width: 100vw;
+                height: 150px;
+                display: flex;
+                justify-content: center;
+            }
+            .left {
+                background-color: #eee;
+                min-width: 40px;
+                max-width: 80px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            .middle {
+                background-color: #ddd;
+                max-width: 240px;
+                flex: 1;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            .right {
+                display: none;
+                background-color: #eee;
+                max-width: 120px;
+            }
+
+            @media screen and (min-width: 301px) {
+                .container {
+                    padding: 0 10px;
+                }
+
+                .left {
+                    flex: unset;
+                    width: 40px;
+                }
+
+                .middle {
+                    flex: unset;
+                    width: 240px;
+                }
+            }
+
+            @media screen and (min-width: 421px) {
+                .left {
+                    flex: 1;
+                }
+                .right {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: 120px;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="left">left</div>
+            <div class="middle">middle</div>
+            <div class="right">right</div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            * {
+                padding: 0;
+                margin: 0;
+            }
+
+            .close {
+                width: 100px;
+                height: 100px;
+                border: 1px solid #aaa;
+                border-radius: 50%;
+                position: relative;
+            }
+
+            .close::before {
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                display: block;
+                content: '';
+                width: 75%;
+                height: 2px;
+                background-color: #aaa;
+                transform: translate(-50%, -50%) rotate(45deg);
+            }
+
+            .close::after {
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                display: block;
+                content: '';
+                width: 75%;
+                height: 2px;
+                background-color: #aaa;
+                transform: translate(-50%, -50%) rotate(135deg);
+            }
+
+            .close1::after {
+                transform: translate(-50%, -50%) rotate(-45deg);
+            }
+        </style>
+    </head>
+    <body>
+        <button class="close"></button>
+        <button class="close close1"></button>
+    </body>
+</html>

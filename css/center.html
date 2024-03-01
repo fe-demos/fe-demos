@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>居中</title>
+        <style>
+            .container {
+                width: 400px;
+                height: 400px;
+                background-color: blue;
+                display: grid;
+                justify-content: center;
+                align-items: center;
+
+                .child {
+                    width: 200px;
+                    height: 200px;
+                    background-color: green;
+                }
+            }
+
+            .wrapper {
+                width: 400px;
+                height: 400px;
+                line-height: 400px;
+                background-color: bisque;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="child"></div>
+        </div>
+
+        <div class="wrapper">我是一只鱼</div>
+    </body>
+</html>

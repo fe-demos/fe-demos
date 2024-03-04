@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            .piechart {
+                width: 100px;
+                height: 100px;
+                clip-path: circle(50px at center);
+                background-image: conic-gradient(#f44336 var(--percentage), transparent 0);
+                mask-image: radial-gradient(
+                    circle closest-side at center,
+                    transparent 80%,
+                    #fff 80%
+                );
+            }
+        </style>
+    </head>
+    <body>
+        <div class="piechart" style="--percentage: 50%"></div>
+    </body>
+</html>

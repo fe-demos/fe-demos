@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Web Vitals</title>
+    </head>
+    <body>
+        <!-- Append the `?module` param to load the module version of `web-vitals` -->
+        <script type="module">
+            import { onCLS, onFID, onLCP } from 'https://unpkg.com/web-vitals@3?module';
+
+            onCLS(console.log);
+            onFID(console.log);
+            onLCP(console.log);
+        </script>
+
+        <script>
+            const ul = document.createElement('ul');
+            for (let i = 0; i < 1000; i++) {
+                const li = document.createElement('li');
+                li.innerText = 'i';
+                ul.appendChild(li);
+            }
+            document.body.append(ul);
+        </script>
+    </body>
+</html>

@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <script>
+            window.onerror = function (message, source, lineno, colno, error) {
+                const errorInfo = {
+                    message,
+                    source,
+                    lineno,
+                    colno,
+                    stack: error ? error.stack : null,
+                };
+                console.log('error', errorInfo);
+                return true; // 阻止浏览器默认的错误处理
+            };
+
+            window.addEventListener('unhandledrejection', function (event) {
+                const errorInfo = {
+                    message: event.reason.message || 'Unhandled promise rejection',
+                    stack: event.reason.stack,
+                };
+                // 上报错误信息到服务器
+                console.log('unhandledrejection', errorInfo);
+            });
+
+            document.addEventListener(
+                'error',
+                function (event) {
+                    const target = event.target;
+                    if (
+                        target.tagName === 'IMG' ||
+                        target.tagName === 'SCRIPT' ||
+                        target.tagName === 'LINK'
+                    ) {
+                        const errorInfo = {
+                            type: 'resourceError',
+                            tagName: target.tagName,
+                            src: target.src || target.href,
+                        };
+                        // 上报错误信息到服务器
+                        console.log('resource error', errorInfo);
+                    }
+                },
+                true,
+            ); // 使用捕获模式来确保错误能被捕获
+        </script>
+    </head>
+    <body>
+        <img src="" alt="" />
+        <script>
+            setTimeout(() => {
+                Promise.reject('reject promise');
+            }, 1000);
+
+            throw new Error('js error');
+        </script>
+    </body>
+</html>

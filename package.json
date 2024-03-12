@@ -1,28 +1,29 @@
 {
-    "name": "fe-demos",
-    "version": "1.0.0",
-    "description": "",
-    "type": "module",
-    "main": "index.js",
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
-    },
-    "keywords": [],
-    "author": "",
-    "license": "ISC",
-    "dependencies": {
-        "@koa/cors": "^5.0.0",
-        "koa": "^2.15.0",
-        "koa-logger": "^3.2.1"
-    },
-    "devDependencies": {
-        "@biomejs/biome": "^1.5.3",
-        "@types/koa": "^2.14.0",
-        "@types/node": "^20.11.10",
-        "@yutengjing/prettier-config": "^1.0.0",
-        "nodemon": "^3.0.3",
-        "prettier": "^3.2.4",
-        "tsx": "^4.7.0",
-        "typescript": "next"
-    }
+  "name": "fe-demos",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@koa/cors": "^5.0.0",
+    "decimal.js": "^10.4.3",
+    "koa": "^2.15.0",
+    "koa-logger": "^3.2.1"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^1.5.3",
+    "@types/koa": "^2.14.0",
+    "@types/node": "^20.11.10",
+    "@yutengjing/prettier-config": "^1.0.0",
+    "nodemon": "^3.0.3",
+    "prettier": "^3.2.4",
+    "tsx": "^4.7.0",
+    "typescript": "next"
+  }
 }

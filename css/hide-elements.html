@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>隐藏元素</title>
+        <style>
+            .container {
+                width: fit-content;
+                border: 1px solid black;
+                margin: 10px 0;
+                display: flex;
+                flex-direction: column;
+
+                button {
+                    width: 200px;
+                    height: 60px;
+                }
+            }
+
+            .display {
+                display: none;
+            }
+
+            .visibility {
+                visibility: hidden;
+            }
+
+            .opacity {
+                opacity: 0;
+            }
+
+            .position {
+                position: fixed;
+                left: -100px;
+                top: -100px;
+            }
+        </style>
+    </head>
+    <body>
+        <button class="display">display: none</button>
+        <div class="container">
+            visibility: hidden
+            <button class="visibility" onclick="alert('visibility: hidden')"></button>
+        </div>
+        <div class="container">
+            opacity: 0
+            <button class="opacity" onclick="alert('opacity: 0')"></button>
+        </div>
+        <button class="position">position</button>
+    </body>
+</html>

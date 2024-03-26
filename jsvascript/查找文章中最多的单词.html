@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="initial-scale=1" />
+        <title>Title</title>
+    </head>
+    <body>
+        <script>
+            {
+                /**
+         实现一个文章处理函数 func(str)
+
+         要求：
+         输出单词的收录对象 countMap、文章中最多的单词 maxKey 和其出现的次数 maxNum
+         单词忽略大小写
+         不使用 split
+         */
+
+                function func(str) {
+                    let countMap = new Map();
+                    const wordRegexp = /\w+/g;
+                    let match;
+                    while ((match = wordRegexp.exec(str))) {
+                        const word = match[0];
+                        countMap.set(word, (countMap.get(word) ?? 0) + 1);
+                    }
+                    let maxNum = -Infinity;
+                    for (const [key, num] of countMap.entries()) {
+                        if (num > maxNum) {
+                            maxNum = num;
+                            maxKey = key;
+                        }
+                    }
+
+                    return { countMap, maxKey, maxNum };
+                }
+
+                const str =
+                    'React makes it painless to create interactive UIs. Design simple views for each state in your application, and React will efficiently update and render just the right components when your data changes. Declarative to make your code more predictable, simpler to understand, and easier to debug.';
+                console.log(func(str)); // {countMap: {word1: num1, word2: num2...}, maxKey: 'xxx', maxNum: n}
+            }
+        </script>
+    </body>
+</html>

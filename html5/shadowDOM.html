@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Shadow DOM</title>
+    </head>
+    <body>
+        <div id="host"></div>
+
+        <template id="my-element"> <p>content in shadow DOM</p> </template>
+        <script>
+            const host = document.querySelector('#host');
+            const shadow = host.attachShadow({ mode: 'open' });
+            /** @type {HTMLTemplateElement} */
+            const template = document.querySelector('#my-element');
+            shadow.appendChild(template.content);
+
+            document.body.appendChild(template.content);
+        </script>
+    </body>
+</html>

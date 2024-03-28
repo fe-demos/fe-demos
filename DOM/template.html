@@ -6,54 +6,29 @@
         <title>Template ELement</title>
     </head>
     <body>
-        <table id="producttable">
-            <thead>
-                <tr>
-                    <td>UPC_Code</td>
-                    <td>Product_Name</td>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- 现有数据可以可选地包括在这里 -->
-            </tbody>
-        </table>
-
-        <template id="productrow">
-            <tr>
-                <td class="record"></td>
-                <td></td>
-            </tr>
+        <template id="tpl1">
+            <p>模版内容 1</p>
+        </template>
+        <template id="tpl2">
+            <p>模版内容 2</p>
         </template>
         <script>
-            // 通过检查来测试浏览器是否支持 HTML 模板元素
-            // 用于保存模板元素的内容属性。
-            if ('content' in document.createElement('template')) {
-                // 使用现有的 HTML tbody 实例化表和该行与模板
-                /** @type {HTMLTemplateElement} */
-                let t = document.querySelector('#productrow'),
-                    td = t.content.querySelectorAll('td');
-                console.log(td);
-                td[0].textContent = '1235646565';
-                td[1].textContent = 'Stuff';
+            /** @type {HTMLTemplateElement} */
+            const template1 = document.querySelector('#tpl1');
 
-                // 克隆新行并将其插入表中
-                let tb = document.getElementsByTagName('tbody');
-                document.body.prepend(t.content);
-                // let clone = document.importNode(t.content, true);
-                // tb[0].appendChild(clone);
+            console.log(template1.content.children.length); // 1
+            console.log(template1.content.childNodes.length); // 3
 
-                // 创建一个新行
-                td[0].textContent = '0384928528';
-                td[1].textContent = 'Acme Kidney Beans';
-                // 重复 append 同一个 DocumentFragment 无效
-                tb[0].appendChild(t.content);
+            document.body.prepend(template1.content);
+            console.log(template1.content.childNodes.length); // 0
 
-                // // 克隆新行并将其插入表中
-                // let clone2 = document.importNode(t.content, true);
-                // tb[0].appendChild(clone2);
-            } else {
-                // 找到另一种方法来添加行到表，因为不支持 HTML 模板元素。
-            }
+            /** @type {HTMLTemplateElement} */
+            const template2 = document.querySelector('#tpl2');
+
+            // const template2Clone = document.importNode(template2.content, true);
+            const template2Clone = template2.content.cloneNode(true);
+            document.body.append(template2.content);
+            document.body.append(template2Clone);
         </script>
     </body>
 </html>

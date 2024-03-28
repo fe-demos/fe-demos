@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            .box {
+                width: 100px;
+                height: 100px;
+                background-color: green;
+                margin-bottom: 40px;
+            }
+
+            .box1 {
+                border: 10px solid black;
+            }
+
+            .box2 {
+                margin-left: 10px;
+                margin-top: 10px;
+                box-shadow: 0 0 0 10px black;
+            }
+
+            .box3 {
+                position: relative;
+                &::after {
+                    position: absolute;
+                    content: '';
+                    width: 100px;
+                    height: 100px;
+                    display: block;
+                    border: 10px solid black;
+                    left: -10px;
+                    top: -10px;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="box box1"></div>
+        <div class="box box2"></div>
+        <div class="box box3"></div>
+    </body>
+</html>
